@@ -3,7 +3,7 @@ import Button from '@/pages/components/button/button';
 import Search from '@/pages/components/search/search'
 import Link from 'next/link';
 import React, { useState, useEffect } from 'react'
-import { MdPersonPin } from 'react-icons/md';
+import { MdLens, MdPersonPin } from 'react-icons/md';
 import { supabase } from '@/supabase';
 import { NextSeo } from 'next-seo';
 
@@ -32,7 +32,7 @@ const Users = ({ dataTeachers }) => {
                 <div className="bg-[color:var(--bgSoft)] p-5 rounded-xl w-full">
                     <div className="flex items-center justify-between">
                         <Search placeholder="Search for a user" />
-                        <Link href="/">
+                        <Link href="/dashboard/users/add">
                             <Button title="+ Teacher" />
                         </Link>
                     </div>
@@ -60,12 +60,15 @@ const Users = ({ dataTeachers }) => {
                                     <td className="p-2.5">{teach.email}</td>
                                     <td className="p-2.5">{formatDate(teach.created_at)}</td>
                                     <td className="p-2.5">
-                                        <div className={`${teach.status === "active" ? "bg-green-500" : "bg-red-500"} rounded-md p-1 text-center uppercase text-sm`}>{teach.status}</div>
+                                        <div className="flex items-center gap-2">
+                                            <MdLens className={`${teach.status === "active" ? "text-green-500" : "text-red-500"}`} />
+                                            {teach.status}
+                                        </div>
                                     </td>
                                     <td className="p-2.5">
                                         <div className="flex gap-2.5">
                                             <Link href="">
-                                                <Button title="Edit" color="bg-red-500" />
+                                                <Button title="View" color="bg-green-500" />
                                             </Link>
                                             <Link href="">
                                                 <Button title="Delete" color="bg-red-500" />
