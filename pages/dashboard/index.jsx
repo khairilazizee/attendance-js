@@ -6,7 +6,7 @@ import Layout from '../components/layout'
 
 const Dashboard = () => {
     return (
-        <Layout>
+        <Layout titleSEO="Dashboard" descSEO="Dashboard">
             <div className="flex gap-5 mt-5">
                 <div className="flex flex-col gap-5 w-full">
                     <div id="cards" className="flex gap-5 justify-between">

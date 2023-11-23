@@ -5,6 +5,7 @@ import Link from 'next/link';
 import React, { useState, useEffect } from 'react'
 import { MdPersonPin } from 'react-icons/md';
 import { supabase } from '@/supabase';
+import { NextSeo } from 'next-seo';
 
 const formatDate = (timestamp) => {
     const date = new Date(timestamp);
@@ -26,13 +27,13 @@ const Users = ({ dataTeachers }) => {
     // console.log(dataTeachers)
 
     return (
-        <Layout>
+        <Layout titleSEO="Users" descSEO="Users">
             <div className="flex gap-5 mt-5">
                 <div className="bg-[color:var(--bgSoft)] p-5 rounded-xl w-full">
                     <div className="flex items-center justify-between">
                         <Search placeholder="Search for a user" />
                         <Link href="/">
-                            <Button title="Add Teacher" />
+                            <Button title="+ Teacher" />
                         </Link>
                     </div>
                     <table className="w-full">
