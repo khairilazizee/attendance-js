@@ -20,8 +20,6 @@ const formatDate = (timestamp) => {
 };
 
 
-
-
 const Users = ({ dataTeachers }) => {
 
     // console.log(dataTeachers)
@@ -33,7 +31,7 @@ const Users = ({ dataTeachers }) => {
                     <div className="flex items-center justify-between">
                         <Search placeholder="Search for a user" />
                         <Link href="/dashboard/users/add">
-                            <Button title="+ Teacher" />
+                            <Button title="+ User" />
                         </Link>
                     </div>
                     <table className="w-full">
@@ -67,7 +65,7 @@ const Users = ({ dataTeachers }) => {
                                     </td>
                                     <td className="p-2.5">
                                         <div className="flex gap-2.5">
-                                            <Link href="">
+                                            <Link href={`/dashboard/users/${teach.id}`}>
                                                 <Button title="View" color="bg-green-500" />
                                             </Link>
                                             <Link href="">

@@ -11,7 +11,7 @@ const Navbar = () => {
 
     return (
         <div className="flex items-center justify-between p-5 rounded-lg bg-[color:var(--bgSoft)]">
-            <div className="text-[color:var(--textSoft)] font-bold capitalize">{navigation}</div>
+            <div className="text-[color:var(--textSoft)] font-bold capitalize">&nbsp;</div>
             <div className="flex items-center gap-5">
                 <div className="flex items-center gap-3 bg-[#2e374a] p-3 rounded-xl">
                     <MdSearch />
