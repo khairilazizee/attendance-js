@@ -14,13 +14,12 @@ const AddUsers = () => {
     const onSubmit = async (dataForm) => {
         console.log(dataForm)
         try {
-            const { data } = await supabase.from('tbl_teachers').insert([dataForm]).select()
+            await supabase.from('tbl_teachers').insert([dataForm]).select()
         } catch (error) {
             throw new Error(error)
         }
 
         router.push("/dashboard/users")
-
     }
 
     return (

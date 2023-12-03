@@ -2,6 +2,8 @@ import React from 'react'
 import { MdHomeFilled, MdContactPage, MdCountertops, MdHelpCenter, MdPeople, MdFace, MdAutoStories, MdAlternateEmail, MdLogout } from "react-icons/md";
 import MenuLink from './menuLink/menuLink';
 import Image from 'next/image';
+import { supabase } from '@/supabase';
+import { useRouter } from 'next/router';
 
 const menuItems = [
     {
@@ -48,6 +50,20 @@ const menuItems = [
 ]
 
 const Sidebar = () => {
+
+    const router = useRouter();
+
+    async function logout() {
+
+        const { error } = await supabase.auth.signOut()
+
+        if (error) {
+            console.log(error)
+        }
+
+        router.push("/login")
+    }
+
     return (
         <div className="sticky top-10 h-screen">
             <div className="flex items-center gap-5 mb-5">
@@ -69,7 +85,7 @@ const Sidebar = () => {
                     </li>
                 ))}
             </ul>
-            <button className="p-2.5 m-5 flex items-center gap-2.5 rounded-xl hover:bg-[#2e374a] w-full">
+            <button className="p-2.5 m-5 flex items-center gap-2.5 rounded-xl hover:bg-[#2e374a] w-full" onClick={logout}>
                 <MdLogout />
                 Logout
             </button>

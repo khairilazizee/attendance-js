@@ -5,7 +5,7 @@ import Link from 'next/link';
 import React, { useState, useEffect } from 'react'
 import { MdLens, MdPersonPin } from 'react-icons/md';
 import { supabase } from '@/supabase';
-import { NextSeo } from 'next-seo';
+import { useRouter } from 'next/router';
 
 const formatDate = (timestamp) => {
     const date = new Date(timestamp);
@@ -21,8 +21,27 @@ const formatDate = (timestamp) => {
 
 
 const Users = ({ dataTeachers }) => {
-
+    const router = useRouter();
     // console.log(dataTeachers)
+
+    const deleteUser = async teachId => {
+        // console.log(teachId)
+        const shouldRemove = confirm("are you sure you want to delete?")
+
+        if (shouldRemove) {
+            try {
+                const { error } = await supabase
+                    .from('tbl_teachers')
+                    .delete()
+                    .eq('id', teachId)
+            } catch (error) {
+                throw new Error(error)
+            }
+        }
+
+        router.push("/dashboard/users");
+    }
+
 
     return (
         <Layout titleSEO="Users" descSEO="Users">
@@ -68,9 +87,9 @@ const Users = ({ dataTeachers }) => {
                                             <Link href={`/dashboard/users/${teach.id}`}>
                                                 <Button title="View" color="bg-green-500" />
                                             </Link>
-                                            <Link href="">
+                                            <a onClick={() => deleteUser(teach.id)}>
                                                 <Button title="Delete" color="bg-red-500" />
-                                            </Link>
+                                            </a>
                                         </div>
                                     </td>
                                 </tr>
