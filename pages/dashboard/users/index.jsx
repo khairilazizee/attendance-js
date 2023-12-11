@@ -31,7 +31,7 @@ const Users = ({ dataTeachers }) => {
         if (shouldRemove) {
             try {
                 const { error } = await supabase
-                    .from('tbl_teachers')
+                    .from('teachers')
                     .delete()
                     .eq('id', teachId)
             } catch (error) {
@@ -105,7 +105,7 @@ const Users = ({ dataTeachers }) => {
 export async function getStaticProps() {
 
     let { data: dataTeachers, error } = await supabase
-        .from('tbl_teachers')
+        .from('teachers')
         .select('*')
 
     return {

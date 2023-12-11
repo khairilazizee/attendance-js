@@ -13,7 +13,7 @@ const UserInformation = ({ teacher }) => {
 
         try {
             const { data, error } = await supabase
-                .from('tbl_teachers')
+                .from('teachers')
                 .update(dataForm)
                 .eq('id', teacher.id)
                 .select()
@@ -71,7 +71,7 @@ const UserInformation = ({ teacher }) => {
 }
 
 export async function getStaticPaths() {
-    const { data: teachers } = await supabase.from("tbl_teachers").select('id')
+    const { data: teachers } = await supabase.from("teachers").select('id')
 
     const paths = teachers.map(teacher => ({
         params: {
@@ -90,7 +90,7 @@ export async function getStaticPaths() {
 export async function getStaticProps(context) {
     const idTeacher = context.params.id
 
-    const { data: teacher } = await supabase.from("tbl_teachers").select("*").eq('id', idTeacher).single()
+    const { data: teacher } = await supabase.from("teachers").select("*").eq('id', idTeacher).single()
 
     return {
         props: {

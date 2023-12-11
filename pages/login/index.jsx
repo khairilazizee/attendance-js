@@ -17,7 +17,7 @@ const Login = () => {
                 email: dataForm.email,
                 password: dataForm.password,
                 options: {
-                    emailRedirectTo: '/dashboard'
+                    emailRedirectedTo: '/dashboard'
                 }
             })
 
@@ -54,7 +54,7 @@ const Login = () => {
                     <form action="" className="" onSubmit={handleSubmit(onSubmit)}>
                         <div className="mb-5 flex flex-col">
                             <label htmlFor="">Username / Email</label>
-                            <input type="text" {...register("email", { required: true })} className="text-black px-3 py-2 placeholder:text-gray-400" />
+                            <input type="email" {...register("email", { required: true })} className="text-black px-3 py-2 placeholder:text-gray-400" />
                         </div>
                         <div className="mb-5 flex flex-col">
                             <label htmlFor="">Password</label>
